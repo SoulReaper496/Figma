@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { StyleSheet, View, Animated } from "react-native";
+import React from "react";
+import { StyleSheet, View, Animated, Text } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
 const Progress = ({ step, steps, height }) => {

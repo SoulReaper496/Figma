@@ -14,6 +14,7 @@ import {
   Ionicons,
 } from "@expo/vector-icons";
 
+import * as Progress from "react-native-progress";
 {
   /* progress bar */
 }
@@ -27,7 +28,7 @@ function Header() {
           <Text
             style={{
               color: "white",
-              fontSize: 12,
+              fontSize: 15,
               marginLeft: 5,
               marginTop: 10,
             }}
@@ -44,8 +45,9 @@ function Header() {
           <Text
             style={{
               color: "#B296DC",
-              fontSize: 10,
+              fontSize: 13,
               marginTop: 10,
+              marginLeft: 160,
             }}
           >
             {" "}
@@ -53,22 +55,24 @@ function Header() {
           </Text>
           <AntDesign
             name="clockcircleo"
-            size={10}
+            size={15}
             color="white"
-            style={{ marginTop: 10, marginRight: 6 }}
+            style={{ marginTop: 10, marginLeft: 5 }}
           />
           <Text
             style={{
               color: "white",
               marginTop: 5,
               justifyContent: "center",
+              fontSize: 20,
+              marginRight: 20,
             }}
           >
             03:52:29
           </Text>
         </View>
-        <View style={{ marginTop: 30 }}>
-          <Text style={{ color: "#B296DC" }}>
+        <View style={{ marginTop: 35 }}>
+          <Text style={{ color: "#B296DC", fontSize: 20 }}>
             {" "}
             Bitcoin price will be under{" "}
           </Text>
@@ -152,17 +156,28 @@ function Header() {
           <FontAwesome5 name="chart-area" size={24} color="#727682" />
           <Text style={{ fontSize: 15 }}> ViewChart</Text>
         </View>
+        <View style={{ alignItems: "center", marginTop: 20 }}>
+          <Progress.Bar
+            progress={0.7}
+            color="#FE4190"
+            borderColor="white"
+            width={400}
+            style={{
+              backgroundColor: "#2DABAD",
+            }}
+          />
+        </View>
 
         <View
           style={{
-            marginTop: 50,
+            marginTop: 30,
             marginLeft: 50,
             flexDirection: "row",
             justifyContent: "space-around",
           }}
         >
           <Text style={{ marginRight: 80 }}>232 Predictions Under</Text>
-          <Text style={{ marginRight: 80 }}> 123 prediction Over</Text>
+          <Text style={{ marginRight: 60 }}> 123 prediction Over</Text>
         </View>
       </View>
     </>
@@ -190,17 +205,19 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   container2: {
-    marginLeft: 290,
+    marginLeft: 450,
   },
   container3: {
+    marginLeft: 20,
     flexDirection: "row",
     justifyContent: "space-around",
     marginTop: 20,
   },
   container4: {
+    marginLeft: 20,
     marginTop: 20,
     backgroundColor: "#F6F3FA",
-    width: 350,
+    width: 500,
     height: 120,
   },
   button: {
