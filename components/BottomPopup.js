@@ -1,84 +1,55 @@
-import React, { Component } from "react";
+import BottomSheet from "react-native-simple-bottom-sheet";
+import react from "react";
+import { View, Text, ScrollView, StyleSheet, Button } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
 
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  CheckBox,
-  TouchableOpacity,
-  ActivityIndicator,
-  Dimensions,
-  Modal,
-} from "react-native";
+function BottomPopup() {
+  return (
+    <View style={{ flex: 1 }}>
+      <BottomSheet isOpen>
+        {(onScrollEndDrag) => (
+          <ScrollView onScrollEndDrag={onScrollEndDrag}>
+            <View>
+              <Text>Your prediction is under</Text>
 
-export default class BottomPopup extends Component {
-  constructor() {
-    super();
-    this.state = {
-      showMe: true,
-    };
-  }
-  render() {
-    return (
-      <View style={styles.container}>
-        <Modal
-          visible={this.state.showMe}
-          onRequestClose={() => {
-            console.warn("closing modal");
-          }}
-        >
-          <View style={styles.modalView}>
-            <Text style={{ alignItems: "center" }}>Hey.Modal is open now</Text>
-            <TouchableOpacity
-              onPress={() => {
-                this.setState({
-                  showMe: false,
-                });
-              }}
-            >
-              <Text style={styles.closeText}>Submit Application</Text>
-            </TouchableOpacity>
-          </View>
-        </Modal>
+              <Text>Entry Tickets</Text>
 
-        {/* To open  Modal  */}
-        <TouchableOpacity
-          onPress={() => {
-            this.setState({
-              showMe: true,
-            });
-          }}
-        >
-          <Text style={styles.openText}>ToggleModal</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
+              <View>
+                {[...Array(10)].map((_, index) => (
+                  <View key={`${index}`} style={styles.listItem}>
+                    <Text>{index + 1}</Text>
+                  </View>
+                ))}
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Text>You Can Win</Text>
+
+                <Text style={{ marginLeft: 320, textSize: 25 }}>Total</Text>
+                <MaterialIcons name="stars" size={15} color="gold" />
+                <Text>5</Text>
+              </View>
+              <View>
+                <Text style={{ color: "green" }}>$2000</Text>
+              </View>
+
+              <Button title="Submit My Prediction"></Button>
+            </View>
+          </ScrollView>
+        )}
+      </BottomSheet>
+    </View>
+  );
 }
+export default BottomPopup;
 
 const styles = StyleSheet.create({
-  container: {
+  listItem: {
+    color: "black",
     alignItems: "center",
-    justifyContent: "center",
-  },
-  modalView: {
-    backgroundColor: "#aaa",
-    height: 500,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  closeText: {
-    backgroundColor: "#333",
-    color: "#bbb",
-    padding: 5,
-    margin: 20,
-  },
-  openText: {
-    backgroundColor: "#333",
-    color: "#bbb",
-    padding: 5,
-    margin: 20,
   },
 });

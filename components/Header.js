@@ -133,6 +133,10 @@ function Header() {
             style={{ alignItems: "center", marginTop: -18 }}
           />
         </TouchableOpacity>
+        <TouchableOpacity style={styles.button1} onPress={() => setShow(true)}>
+          <Text style={styles.buttonText1}>Over</Text>
+          <Entypo name="arrow-up" size={20} color="white" />
+        </TouchableOpacity>
       </View>
       <View style={styles.container4}>
         <View
